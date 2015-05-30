@@ -3,12 +3,12 @@
 #include <stdlib.h>
 typedef struct col 
 {
-    int *cola;
-    int capacity;
-    int tam;
-    int* frente;
-    int* final;
-    int nfr,nfi;
+    int *cola; //Array donde se insertan los elementos
+    int capacity; //Capacidad de la cola
+    int tam; // tamaño actual de la cola
+    int* frente; //Puntero o dirección de memoria del frente
+    int* final; // Puntero o dirección de memoria del final
+    int nfr,nfi; //Enteros que almacenan el índice de posoción final e inicial.
 }cl;
 
 //Create
@@ -18,12 +18,14 @@ cl * create(int maxE)
    Q->cola=malloc(maxE*sizeof(int));
    Q->tam=0;
    Q->capacity=maxE;
-   Q->frente=&(Q->cola[0]);
+   Q->frente=&(Q->cola[0]); 
    Q->final=&(Q->cola[0]);
    Q->nfr=1;
    Q->nfi=1;
    return Q;
 }
+
+//delete elements
 
 int elim(cl * Q, int elem)
 {
@@ -61,9 +63,10 @@ int elim(cl * Q, int elem)
     return s;
 }
 
+//Insert elements
 void ins(cl * Q, int elem)
 {
-    if ( Q->tam >= Q->capacity)
+    if (lle(Q))
 	printf("Cola llena, no se puede ingresar mas elementos\n");
     else
     {
@@ -78,7 +81,7 @@ void ins(cl * Q, int elem)
 void display(cl *qu)
 {
     int * pt;
-    if (qu->tam != 0)
+    if (!vac(qu))
     {
     	pt=qu->frente;
     	while ( pt != qu->final)
@@ -90,8 +93,28 @@ void display(cl *qu)
     }
     else
 	printf("La cola está vacía.\n");
+    if (lle(qu))
+	printf("La cola está llena.\n");
 }
 
+//Vacía
+int vac(cl * Q)
+{
+    if (Q->tam != 0)
+	return 0;
+    else
+	return 1;
+}
+
+//Llena
+
+int lle(cl * Q)
+{
+    if (Q->tam >= Q->capacity)
+	return 1;
+    else
+	return 0;
+}
 void frfi(cl * Q)
 {
     printf("El frente es: %d y el final: %d\n",Q->nfr,Q->nfi);
@@ -99,12 +122,15 @@ void frfi(cl * Q)
 void main()
 {
     cl * cl1 = create(5);
+    cl * cl2 = create(5);
     ins(cl1,7);
-    ins(cl1,9);
-    /*ins(cl1,3);
-    ins(cl1,5);
     ins(cl1,8);
-    elim(cl1,9);*/
+    ins(cl1,9);
+    ins(cl1,3);
+    ins(cl1,5);
+    ins(cl2,8);
+    //elim(cl1,9);
     display(cl1);
-    frfi(cl1);
+    display(cl2);
+    //frfi(cl1);
 }
