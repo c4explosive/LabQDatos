@@ -1,3 +1,4 @@
+﻿//Comentario
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct col 
