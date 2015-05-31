@@ -1,4 +1,9 @@
-﻿//Comentario
+﻿/* Integrantes:
+   	Angel Espinosa
+   	Eduardo Perez
+   Grupo:
+   	1IL121
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #define getch() system("read ")
