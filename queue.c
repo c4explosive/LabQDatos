@@ -203,6 +203,9 @@ void menu()
 		break;
 	    case 5:
 		cont=0;
+		break;
+	    default:
+		printf("Escriba una opciòn correcta.\n"); getch(); break;
 	}
     }while (cont);
 }
