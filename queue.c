@@ -202,11 +202,8 @@ void menu()
 	    case 5:
 		cont=0;
 		break;
-	    default:
-		printf("Escriba una opciòn correcta.\n"); getch(); break;
-
         default:
-            printf("Opción Invalida, Intente de nuevo\n");
+            printf("Opción Invalida, Intente de nuevo\n"); getch();
 	}
     }while (cont);
 }
