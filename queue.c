@@ -1,9 +1,11 @@
 ﻿//Comentario
 #include <stdio.h>
 #include <stdlib.h>
+#define getch() system("read ")
+#define clrscr() system("clear")
 typedef struct col 
 {
-    int *cola; //Array donde se insertan los elementos
+    char *cola; //Array donde se insertan los elementos
     int capacity; //Capacidad de la cola
     int tam; // tamaño actual de la cola
     int* frente; //Puntero o dirección de memoria del frente
@@ -15,7 +17,7 @@ typedef struct col
 cl * create(int maxE)
 {
    cl *Q=malloc(sizeof(cl)); //Poner MaxE*sizeof... por si acaso
-   Q->cola=malloc(maxE*sizeof(int));
+   Q->cola=malloc(maxE*sizeof(char));
    Q->tam=0;
    Q->capacity=maxE;
    Q->frente=&(Q->cola[0]); 
@@ -27,7 +29,7 @@ cl * create(int maxE)
 
 //delete elements
 
-int elim(cl * Q, int elem)
+char elim(cl * Q, char elem)
 {
     int s,pl=0;
     int * pt;
@@ -64,7 +66,7 @@ int elim(cl * Q, int elem)
 }
 
 //Insert elements
-void ins(cl * Q, int elem)
+void ins(cl * Q, char elem)
 {
     if (lle(Q))
 	printf("Cola llena, no se puede ingresar mas elementos\n");
@@ -86,7 +88,7 @@ void display(cl *qu)
     	pt=qu->frente;
     	while ( pt != qu->final)
     	{
-	    printf("%d, ",*pt);
+	    printf("%c, ",*pt);
    	    pt++;
     	}
     	printf("\b\b \n");
@@ -119,18 +121,56 @@ void frfi(cl * Q)
 {
     printf("El frente es: %d y el final: %d\n",Q->nfr,Q->nfi);
 }
-void main()
+/////////////////////////////////////////////////////////////////////////////////
+void menu()
 {
     cl * cl1 = create(5);
-    cl * cl2 = create(5);
-    ins(cl1,7);
-    ins(cl1,8);
-    ins(cl1,9);
-    ins(cl1,3);
-    ins(cl1,5);
-    ins(cl2,8);
-    //elim(cl1,9);
-    display(cl1);
-    display(cl2);
-    //frfi(cl1);
+    int op;
+    char cont=1;char elem;
+    char * opp=malloc(sizeof(char));
+    do
+    {
+	clrscr();
+	printf("Operaciones con colas\n");
+	printf("1. Insertar.\n");
+	printf("2. Eliminar.\n");
+	printf("3. Ver Cola.\n");
+	printf("4. Salir.\n");
+	printf("Escriba la opciòn: ");
+	scanf("%s",opp);
+	fflush(stdin);
+	op=atoi(opp);
+	switch(op)
+	{
+	    case 1: 
+		printf("Escriba el elemento a ingresar: ");
+		scanf("%s",opp);
+		fflush(stdin);
+		elem=opp[0];
+		ins(cl1,elem);
+		display(cl1);
+		getch();
+		break;
+	    case 2:
+		printf("Escriba el elemento hasta donde eliminar: ");
+		scanf("%s",opp);
+		fflush(stdin);
+		elem=opp[0];
+		elim(cl1,elem);
+		display(cl1);
+		getch();
+		break;
+	    case 3:
+		printf("\t\t\tCOLA");
+	        display(cl1);
+		getch();
+		break;
+	    case 4:
+		cont=0;
+	}
+    }while (cont);
+}
+void main()
+{
+    menu();    
 }
