@@ -124,48 +124,72 @@ void frfi(cl * Q)
 /////////////////////////////////////////////////////////////////////////////////
 void menu()
 {
-    cl * cl1 = create(5);
-    int op;
+    int op, sp=0;
     char cont=1;char elem;
     char * opp=malloc(sizeof(char));
     do
     {
 	clrscr();
 	printf("Operaciones con colas\n");
-	printf("1. Insertar.\n");
-	printf("2. Eliminar.\n");
-	printf("3. Ver Cola.\n");
-	printf("4. Salir.\n");
+	printf("1. Tamaño de la cola.\n");
+	printf("2. Insertar.\n");
+	printf("3. Eliminar.\n");
+	printf("4. Ver Cola.\n");
+	printf("5. Salir.\n");
 	printf("Escriba la opciòn: ");
 	scanf("%s",opp);
 	fflush(stdin);
 	op=atoi(opp);
 	switch(op)
 	{
-	    case 1: 
-		printf("Escriba el elemento a ingresar: ");
+	    case 1:
+		printf("Ingrese el tamaño de la cola: ");
 		scanf("%s",opp);
 		fflush(stdin);
-		elem=opp[0];
-		ins(cl1,elem);
-		display(cl1);
-		getch();
-		break;
+    		cl * cl1 = create(atoi(opp));
+		sp=1;
+		break;		
 	    case 2:
-		printf("Escriba el elemento hasta donde eliminar: ");
-		scanf("%s",opp);
-		fflush(stdin);
-		elem=opp[0];
-		elim(cl1,elem);
-		display(cl1);
+		if (sp)
+		{ 
+		    printf("Escriba el elemento a ingresar: ");
+		    scanf("%s",opp);
+		    fflush(stdin);
+		    elem=opp[0];
+		    ins(cl1,elem);
+		    printf("\t\t\tCOLA\n");
+		    display(cl1);
+		}
+		else
+		    printf("Ingrese el tamaño de la cola primero.\n");
 		getch();
 		break;
 	    case 3:
-		printf("\t\t\tCOLA");
-	        display(cl1);
+		if (sp)
+		{
+		    printf("Escriba el elemento hasta donde eliminar: ");
+		    scanf("%s",opp);
+		    fflush(stdin);
+		    elem=opp[0];
+		    elim(cl1,elem);
+		    printf("\t\t\tCOLA\n");
+		    display(cl1);
+		}
+		else
+		    printf("Ingrese el tamaño de la cola primero.\n");
 		getch();
 		break;
 	    case 4:
+		if(sp)
+		{
+		    printf("\t\t\tCOLA\n");
+	            display(cl1);	
+		}
+		else
+		    printf("Ingrese el tamaño de la cola primero.\n");
+		getch();
+		break;
+	    case 5:
 		cont=0;
 	}
     }while (cont);
