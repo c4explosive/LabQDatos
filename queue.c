@@ -203,7 +203,7 @@ void menu()
 		cont=0;
 		break;
         default:
-            printf("Opción Invalida, Intente de nuevo\n"); getch();
+            printf("Opción Invalida, Intente de nuevo \n"); getch();
 	}
     }while (cont);
 }
