@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #define getch() system("read ") //Comentar estas dos lineas "defines".
 #define clrscr() system("clear")
-typedef struct col 
+typedef struct col
 {
     char *cola; //Array donde se insertan los elementos
     int capacity; //Capacidad de la cola
@@ -25,7 +25,7 @@ cl * create(int maxE)
    Q->cola=malloc(maxE*sizeof(char));
    Q->tam=0;
    Q->capacity=maxE;
-   Q->frente=&(Q->cola[0]); 
+   Q->frente=&(Q->cola[0]);
    Q->final=&(Q->cola[0]);
    Q->nfr=1;
    Q->nfi=1;
@@ -91,6 +91,7 @@ void display(cl *qu)
     if (!vac(qu))
     {
     	pt=qu->frente;
+    	printf("Cola: ");
     	while ( pt != qu->final)
     	{
 	    printf("%c, ",*pt);
@@ -160,16 +161,15 @@ void menu()
 		    sp=1;
 		}
 		getch();
-		break;		
+		break;
 	    case 2:
 		if (sp)
-		{ 
+		{
 		    printf("Escriba el elemento a ingresar: ");
 		    scanf("%s",opp);
 		    fflush(stdin);
 		    elem=opp[0];
 		    ins(cl1,elem);
-		    printf("\t\t\tCOLA\n");
 		    display(cl1);
 		}
 		else
@@ -184,7 +184,6 @@ void menu()
 		    fflush(stdin);
 		    elem=opp[0];
 		    elim(cl1,elem);
-		    printf("\t\t\tCOLA\n");
 		    display(cl1);
 		}
 		else
@@ -194,8 +193,7 @@ void menu()
 	    case 4:
 		if(sp)
 		{
-		    printf("\t\t\tCOLA\n");
-	            display(cl1);	
+	            display(cl1);
 		}
 		else
 		    printf("Ingrese el tamaño de la cola primero.\n");
@@ -206,10 +204,13 @@ void menu()
 		break;
 	    default:
 		printf("Escriba una opciòn correcta.\n"); getch(); break;
+
+        default:
+            printf("Opción Invalida, Intente de nuevo\n");
 	}
     }while (cont);
 }
 void main()
 {
-    menu();    
+    menu();
 }
