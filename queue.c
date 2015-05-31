@@ -137,11 +137,7 @@ void menu()
     {
 	clrscr();
 	printf("Operaciones con colas\n");
-<<<<<<< HEAD
-	printf("1. Tamaño de la cola.\n");
-=======
 	printf("1. Ingresar el tamaño de la cola.\n");
->>>>>>> origin/master
 	printf("2. Insertar.\n");
 	printf("3. Eliminar.\n");
 	printf("4. Ver Cola.\n");
@@ -153,13 +149,6 @@ void menu()
 	switch(op)
 	{
 	    case 1:
-<<<<<<< HEAD
-		printf("Ingrese el tamaño de la cola: ");
-		scanf("%s",opp);
-		fflush(stdin);
-    		cl * cl1 = create(atoi(opp));
-		sp=1;
-=======
 		if (sp)
 		    printf("El tamaño de cola, ya está definido.\n");
 		else
@@ -171,7 +160,6 @@ void menu()
 		    sp=1;
 		}
 		getch();
->>>>>>> origin/master
 		break;		
 	    case 2:
 		if (sp)
@@ -189,16 +177,6 @@ void menu()
 		getch();
 		break;
 	    case 3:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-		printf("\t\t\tCOLA");
->>>>>>> parent of cdb28ee... Display
-	        display(cl1);
-=======
-=======
->>>>>>> origin/master
 		if (sp)
 		{
 		    printf("Escriba el elemento hasta donde eliminar: ");
@@ -211,10 +189,6 @@ void menu()
 		}
 		else
 		    printf("Ingrese el tamaño de la cola primero.\n");
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 		getch();
 		break;
 	    case 4:
