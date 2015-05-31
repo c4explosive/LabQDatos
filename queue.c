@@ -150,7 +150,7 @@ void menu()
 	{
 	    case 1:
 		if (sp)
-		    printf("Cola en uso, no se puede definir el tamaño nuevamente.\n");
+		    printf("El tamaño de cola, ya está definido.\n");
 		else
 		{
 		    printf("Ingrese el tamaño de la cola: ");
