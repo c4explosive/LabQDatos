@@ -3,6 +3,8 @@
    	Eduardo Perez
    Grupo:
    	1IL121
+   Fecha:
+	31/05/2015
 */
 #include <stdio.h>
 #include <stdlib.h>
