@@ -131,12 +131,13 @@ void menu()
 {
     int op, sp=0;
     char cont=1;char elem;
+    cl * cl1;
     char * opp=malloc(sizeof(char));
     do
     {
 	clrscr();
 	printf("Operaciones con colas\n");
-	printf("1. Tamaño de la cola.\n");
+	printf("1. Ingresar el tamaño de la cola.\n");
 	printf("2. Insertar.\n");
 	printf("3. Eliminar.\n");
 	printf("4. Ver Cola.\n");
@@ -148,11 +149,17 @@ void menu()
 	switch(op)
 	{
 	    case 1:
-		printf("Ingrese el tamaño de la cola: ");
-		scanf("%s",opp);
-		fflush(stdin);
-    		cl * cl1 = create(atoi(opp));
-		sp=1;
+		if (sp)
+		    printf("Cola en uso, no se puede definir el tamaño nuevamente.\n");
+		else
+		{
+		    printf("Ingrese el tamaño de la cola: ");
+		    scanf("%s",opp);
+		    fflush(stdin);
+    		    cl1 = create(atoi(opp));
+		    sp=1;
+		}
+		getch();
 		break;		
 	    case 2:
 		if (sp)
