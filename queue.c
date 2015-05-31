@@ -6,7 +6,7 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#define getch() system("read ")
+#define getch() system("read ") //Comentar estas dos lineas "defines".
 #define clrscr() system("clear")
 typedef struct col 
 {
@@ -74,7 +74,7 @@ char elim(cl * Q, char elem)
 void ins(cl * Q, char elem)
 {
     if (lle(Q))
-	printf("Cola llena, no se puede ingresar mas elementos\n");
+	printf("Cola llena no se puede ingresar mas elementos\n");
     else
     {
     	*Q->final=elem;
